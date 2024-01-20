@@ -36,6 +36,6 @@ public class UserDaoService {
 																				// id passed
 		// the predicate then sends a list of users with given id
 		// the stream filters the predicate and then fetches the first one and gets it.
-		return users.stream().filter(predicate).findFirst().get();
+		return users.stream().filter(predicate).findFirst().orElse(null);   //if not found the gives back
 	}
 }
