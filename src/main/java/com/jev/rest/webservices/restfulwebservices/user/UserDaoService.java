@@ -31,11 +31,19 @@ public class UserDaoService {
 	}
 
 	public User findById(int id) {
-		
+
 		Predicate<? super User> predicate = user -> user.getId().equals(id); // will check if the id of user matches the
 																				// id passed
 		// the predicate then sends a list of users with given id
 		// the stream filters the predicate and then fetches the first one and gets it.
-		return users.stream().filter(predicate).findFirst().orElse(null);   //if not found the gives back
+		return users.stream().filter(predicate).findFirst().orElse(null); // if not found the gives back
+	}
+
+	public void deleteById(int id) {
+
+		Predicate<? super User> predicate = user -> user.getId().equals(id); // will check if the id of user matches the
+		users.removeIf(predicate);																		// id passed
+		// the predicate then sends a list of users with given id
+		// the stream filters the predicate and then fetches the first one and gets it.
 	}
 }
